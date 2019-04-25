@@ -5,10 +5,8 @@ import { FormattedMessage } from 'react-intl'
 import { Banner, Text } from 'blockchain-info-components'
 
 import About from './About'
-import PairingCode from './PairingCode'
 import PrivacyPolicy from './PrivacyPolicy'
 import TermsOfService from './TermsOfService'
-import WalletId from './WalletId'
 
 const Wrapper = styled.section`
   padding: 30px;
@@ -32,8 +30,6 @@ const General = () => {
           />
         </Text>
       </Banner>
-      <WalletId />
-      <PairingCode />
       <PrivacyPolicy />
       <TermsOfService />
       <About />

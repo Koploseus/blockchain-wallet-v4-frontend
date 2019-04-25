@@ -59,23 +59,30 @@ export default function* rootSaga ({
   btcSocket,
   ethSocket,
   ratesSocket,
+  rootDocument,
   networks,
   options
 }) {
-  const coreSagas = coreSagasFactory({ api, networks, options })
+
+  const coreSagas = coreSagasFactory({
+    api,
+    networks,
+    options,
+    rootDocument
+  })
 
   yield all([
     call(welcomeSaga),
     fork(alerts),
     fork(analytics({ api })),
-    fork(auth({ api, coreSagas })),
+    fork(auth({ api, coreSagas, rootDocument })),
     fork(components({ api, coreSagas, networks, options })),
     fork(modules({ api, coreSagas, networks })),
     fork(preferences()),
     fork(goals({ api })),
     fork(wallet({ coreSagas })),
     fork(middleware({ api, bchSocket, btcSocket, ethSocket, ratesSocket })),
-    fork(coreRootSagaFactory({ api, networks, options })),
+    fork(coreRootSagaFactory({ api, networks, options, rootDocument })),
     fork(router()),
     call(languageInitSaga)
   ])

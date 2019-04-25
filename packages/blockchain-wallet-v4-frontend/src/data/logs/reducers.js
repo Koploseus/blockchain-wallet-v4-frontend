@@ -18,6 +18,7 @@ const logger = (state = INITIAL_STATE, action) => {
 
   switch (type) {
     case AT.LOG_ERROR_MSG: {
+      console.error(payload)
       return insert(0, createLog('ERROR', payload), state)
     }
     case AT.LOG_INFO_MSG: {

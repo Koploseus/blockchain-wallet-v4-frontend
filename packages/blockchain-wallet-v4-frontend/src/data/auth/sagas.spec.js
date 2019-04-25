@@ -93,11 +93,11 @@ describe('authSagas', () => {
       })
     })
 
-    it('should call login routine', () => {
+    it('should put login routine', () => {
       const { mobileLogin } = payload
       saga
         .next()
-        .call(loginRoutineSaga, mobileLogin)
+        .put(actions.auth.loginRoutineSaga(mobileLogin))
         .next()
         .isDone()
     })
@@ -185,9 +185,9 @@ describe('authSagas', () => {
               })
           })
 
-          it('should call login routine', () => {
+          it('should put login routine', () => {
             const { mobileLogin } = payload
-            saga.next().call(loginRoutineSaga, mobileLogin)
+            saga.next().put(actions.auth.loginRoutineSaga(mobileLogin))
           })
 
           it('should follow 2FA flow on auth error', () => {

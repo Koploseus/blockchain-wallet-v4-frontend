@@ -5,8 +5,10 @@ import ActivityLogging from './ActivityLogging'
 import APIAccess from './APIAccess'
 import IPWhitelist from './IPWhitelist'
 import LoginIpRestriction from './LoginIpRestriction'
+import PairingCode from './PairingCode'
 import PasswordStretching from './PasswordStretching'
 import WalletAccessTor from './WalletAccessTor'
+import WalletId from './WalletId'
 import TwoStepVerificationRemember from './TwoStepVerificationRemember'
 import WalletPassword from './WalletPassword'
 import SecondPasswordWallet from './SecondPasswordWallet'
@@ -20,6 +22,8 @@ export default class AdvancedSecurity extends React.PureComponent {
   render () {
     return (
       <Wrapper>
+        <WalletId />
+        <PairingCode />
         <WalletPassword />
         <SecondPasswordWallet />
         <TwoStepVerificationRemember />
